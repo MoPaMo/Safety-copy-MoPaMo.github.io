@@ -30,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let data = jsonData.filter((a) => a.type == "PushEvent");
       let parent = document.getElementById("col"); //.innerHTML=data
       for (let i = 0; i < 2; i++) {
-        parent.children[i].innerHTML = data[i].payload.commits[0].message;
+        let b = data[i].payload.commits[0],
+          c = parent.children[i];
+        c.innerHTML = b.message;
       }
     })
     .catch((err) => {
