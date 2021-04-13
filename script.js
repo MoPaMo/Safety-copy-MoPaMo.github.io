@@ -21,5 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
+  //https://api.github.com/users/MoPaMo/events
+  fetch('https://api.github.com/users/MoPaMo/events', {
+        method: 'get'
+    })
+    .then(response => response.json())
+    .then(jsonData => {console.log(jsonData)
+    let data = jsonData.filter((a)=>a.type=="PushEvent")
+    document.getElementById("name").innerHTML=data
+    })
+    .catch(err => {
+            //error block
+        })
 });
