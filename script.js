@@ -62,13 +62,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <span class="icon">
             <i class="fas fa-book"></i>
           </span>
-          ${
-            data[i].created_at
-              ? getD(data[i].created_at)
-              : "no date provided :("
-          }
+          
           <span>${data[i].repo.name}</span>
-        </span><br/><div class="is-size-6 is-size-5-widescreen">${
+        </span> - <span class="is-size-7 has-text-weight-light">${
+          data[i].created_at
+            ? getD(data[i].created_at)
+            : "no date provided :("
+        }</span><br/><div class="is-size-6 is-size-5-widescreen">${
           b.message
         }</div>`;
         console.log(a);
