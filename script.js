@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 0; i < 3; i++) {
         let b = data[i].payload.commits[0],
           c = parent.children[i].children[0],
-          a =`<span class="icon-text">
+          a =`<span class="icon-text is-size-7 has-text-weight-bold">
           <span class="icon">
             <i class="fas fa-atlas"></i>
           </span>
