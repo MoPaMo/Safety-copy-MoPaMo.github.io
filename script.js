@@ -1,37 +1,27 @@
-const getD=(previous)=>{
+const getD = (previous) => {
   var msPerMinute = 60 * 1000;
   var msPerHour = msPerMinute * 60;
   var msPerDay = msPerHour * 24;
   var msPerMonth = msPerDay * 30;
   var msPerYear = msPerDay * 365;
-console.log(previous)
-console.log(new Date(previous))
+  console.log(previous);
+  console.log(new Date(previous));
   var elapsed = new Date() - new Date(previous);
 
   if (elapsed < msPerMinute) {
-       return Math.round(elapsed/1000) + ' seconds ago';   
+    return Math.round(elapsed / 1000) + " seconds ago";
+  } else if (elapsed < msPerHour) {
+    return Math.round(elapsed / msPerMinute) + " minutes ago";
+  } else if (elapsed < msPerDay) {
+    return Math.round(elapsed / msPerHour) + " hours ago";
+  } else if (elapsed < msPerMonth) {
+    return "approximately " + Math.round(elapsed / msPerDay) + " days ago";
+  } else if (elapsed < msPerYear) {
+    return "approximately " + Math.round(elapsed / msPerMonth) + " months ago";
+  } else {
+    return "approximately " + Math.round(elapsed / msPerYear) + " years ago";
   }
-
-  else if (elapsed < msPerHour) {
-       return Math.round(elapsed/msPerMinute) + ' minutes ago';   
-  }
-
-  else if (elapsed < msPerDay ) {
-       return Math.round(elapsed/msPerHour ) + ' hours ago';   
-  }
-
-  else if (elapsed < msPerMonth) {
-      return 'approximately ' + Math.round(elapsed/msPerDay) + ' days ago';   
-  }
-
-  else if (elapsed < msPerYear) {
-      return 'approximately ' + Math.round(elapsed/msPerMonth) + ' months ago';   
-  }
-
-  else {
-      return 'approximately ' + Math.round(elapsed/msPerYear ) + ' years ago';   
-  }
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   // Get all "navbar-burger" elements
@@ -61,21 +51,27 @@ document.addEventListener("DOMContentLoaded", () => {
   })
     .then((response) => response.json())
     .then((jsonData) => {
-     // console.log(jsonData);
+      // console.log(jsonData);
       let data = jsonData.filter((a) => a.type == "PushEvent");
       let parent = document.getElementById("col"); //.innerHTML=data
-      console.log(data)
+      console.log(data);
       for (let i = 0; i < 3; i++) {
         let b = data[i].payload.commits[0],
           c = parent.children[i].children[0],
-          a =`<span class="icon-text is-size-7 has-text-weight-bold">
+          a = `<span class="icon-text is-size-7 has-text-weight-bold">
           <span class="icon">
             <i class="fas fa-book"></i>
           </span>
-          ${(data[i].created_at?getD(data[i].created_at):"no date provided :(")}
+          ${
+            data[i].created_at
+              ? getD(data[i].created_at)
+              : "no date provided :("
+          }
           <span>${data[i].repo.name}</span>
-        </span><br/><div class="is-size-6 is-size-5-widescreen">${b.message}</div>`;
-          console.log(a)
+        </span><br/><div class="is-size-6 is-size-5-widescreen">${
+          b.message
+        }</div>`;
+        console.log(a);
         c.innerHTML = a.toString();
       }
     })
