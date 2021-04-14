@@ -1,3 +1,5 @@
+const { SlAlert } = require("@shoelace-style/shoelace");
+
 const getD = (previous) => {
   var msPerMinute = 60 * 1000;
   var msPerHour = msPerMinute * 60;
@@ -24,6 +26,7 @@ const getD = (previous) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  sal()
   // Get all "navbar-burger" elements
   const $navbarBurgers = Array.prototype.slice.call(
     document.querySelectorAll(".navbar-burger"),
