@@ -9,17 +9,17 @@ const getD = (previous) => {
   var elapsed = new Date() - new Date(previous);
 
   if (elapsed < msPerMinute) {
-    return Math.round(elapsed / 1000) + " seconds ago";
+    return Math.round(elapsed / 1000) + " s ago";
   } else if (elapsed < msPerHour) {
-    return Math.round(elapsed / msPerMinute) + " minutes ago";
+    return Math.round(elapsed / msPerMinute) + " m ago";
   } else if (elapsed < msPerDay) {
-    return Math.round(elapsed / msPerHour) + " hours ago";
+    return Math.round(elapsed / msPerHour) + " h ago";
   } else if (elapsed < msPerMonth) {
-    return "approximately " + Math.round(elapsed / msPerDay) + " days ago";
+    return "approximately " + Math.round(elapsed / msPerDay) + " d ago";
   } else if (elapsed < msPerYear) {
-    return "approximately " + Math.round(elapsed / msPerMonth) + " months ago";
+    return "approximately " + Math.round(elapsed / msPerMonth) + " mo ago";
   } else {
-    return "approximately " + Math.round(elapsed / msPerYear) + " years ago";
+    return "approximately " + Math.round(elapsed / msPerYear) + " y ago";
   }
 };
 
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </span>
           
           <span>${data[i].repo.name}</span>
-        </span> - <span class="is-size-7 icon-texthas-text-weight-light"><span class="icon">
+        </span><span class="is-size-7 icon-texthas-text-weight-light"><span class="icon">
         <i class="fas fa-clock"></i>
       </span>${
         data[i].created_at ? getD(data[i].created_at) : "no date provided :("
