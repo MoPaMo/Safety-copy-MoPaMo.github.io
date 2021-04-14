@@ -64,9 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </span>
           
           <span>${data[i].repo.name}</span>
-        </span> - <span class="is-size-7 has-text-weight-light">${
-          data[i].created_at ? getD(data[i].created_at) : "no date provided :("
-        }</span><br/><div class="is-size-6 is-size-5-widescreen">${
+        </span> - <span class="is-size-7 icon-texthas-text-weight-light"><span class="icon">
+        <i class="fas fa-clock"></i>
+      </span>${
+        data[i].created_at ? getD(data[i].created_at) : "no date provided :("
+      }</span><br/><div class="is-size-6 is-size-5-widescreen">${
             b.message
           }</div>`;
         console.log(a);
