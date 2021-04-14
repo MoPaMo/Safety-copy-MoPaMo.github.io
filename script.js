@@ -1,5 +1,3 @@
-const { SlAlert } = require("@shoelace-style/shoelace");
-
 const getD = (previous) => {
   var msPerMinute = 60 * 1000;
   var msPerHour = msPerMinute * 60;
