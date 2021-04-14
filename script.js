@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       for (let i = 0; i < 3; i++) {
         let b = data[i].payload.commits[0],
           c = parent.children[i].children[0],
-          a =`<span class="is-size-4">${b.message}</span>`;
+          a =`<span class="is-size-6 is-size-5-widescreen">${b.message}</span>`;
           console.log(a)
         c.innerHTML = a.toString();
       }
