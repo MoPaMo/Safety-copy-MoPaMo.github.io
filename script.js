@@ -26,14 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
   })
     .then((response) => response.json())
     .then((jsonData) => {
-      console.log(jsonData);
+     // console.log(jsonData);
       let data = jsonData.filter((a) => a.type == "PushEvent");
       let parent = document.getElementById("col"); //.innerHTML=data
-      console.log(data)
+      //console.log(data)
       for (let i = 0; i < 3; i++) {
         let b = data[i].payload.commits[0],
-          c = parent.children[i].children[0];
-        c.innerHTML = b.message;
+          c = parent.children[i].children[0],
+          a =`<span class="is-size-4">${b.message}</span>`;
+          console.log(a)
+        c.innerHTML = a.toString();
       }
     })
     .catch((err) => {
